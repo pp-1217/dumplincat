@@ -1,0 +1,29 @@
+#dataSource
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password:
+    url: jdbc:mysql://localhost:3306/message_send?useUnicode=true&characterEncoding=utf8&useSSL=false
+
+
+  #thymeleaf cache close
+  thymeleaf:
+    cache: false
+
+
+#pojo package typealiases
+mybatis:
+  type-aliases-package: com.zywl.pojo
+
+
+# is Using
+sms:
+  appid: 860ff9280e8b4cff8be046faa710e01a
+  sid: f59afa3cd831fd675570c80b24477fb9
+  token: 42c7dd527757623c023761a4ef0fafd2
+  resturl: https://open.ucpaas.com/ol/sms/sendsms
+  templateid: 532634
+  content: 您好，当前水压过低，请重新设定参数。
+
+

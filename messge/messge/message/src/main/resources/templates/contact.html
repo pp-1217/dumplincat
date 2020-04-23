@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分类管理</title>
+    <link rel="stylesheet" href="/css/layui.css">
+</head>
+<body>
+    <!-- 添加班级 -->
+    <div id="addClass" style="display: none;margin-top: 20px;" class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" id="realname" name="realname" style="width: 250px;" lay-verify="required"
+                       placeholder="请输入姓名" class="layui-input ">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">电话号码</label>
+            <div class="layui-input-block" style="width: 450px;">
+                <input type="text" id="phone" name="phone" style="width: 250px;" lay-verify="required"
+                       placeholder="请输入联系人电话" class="layui-input ">
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加班级 -->
+    <div id="postSms" style="display: none;margin-top: 20px;" class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">验证码</label>
+            <div class="layui-input-block">
+                <input type="text" id="verifyCode" name="verifyCode" style="width: 250px;" lay-verify="required"
+                       placeholder="请输入验证码" class="layui-input ">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">过期时间</label>
+            <div class="layui-input-block" style="width: 450px;">
+                <input type="text" id="timeout" name="timeout" style="width: 250px;" lay-verify="required"
+                       placeholder="请输入过期时间(秒s)" class="layui-input ">
+            </div>
+        </div>
+    </div>
+
+    <!--  查看数据  -->
+    <div id="ClassDetail" style="display: none;margin-top: 20px;">
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" readonly id="realnameShow" name="classifyname" style="width: 250px;" lay-verify="required"
+                       placeholder="请输入姓名" class="layui-input ">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">电话号码</label>
+            <div class="layui-input-block" style="width: 450px;">
+                <input type="text" readonly id="phoneShow" name="phoneShow" style="width: 250px;" lay-verify="required"
+                       placeholder="请输入电话号码" class="layui-input ">
+            </div>
+        </div>
+    </div>
+
+    <!--  数据表格  -->
+    <table class="layui-hide" id="classTable" lay-filter="classTable"></table>
+
+    <!--  操作三剑客  -->
+    <script type="text/html" id="classBar">
+        <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>    <!--  操作三剑客  -->
+    <script type="text/html" id="postBar">
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="post">发送信息</a>
+    </script>
+
+    <!--  添加数据按钮  -->
+    <script type="text/html" id="classToolBar">
+        <div class="layui-btn-container">
+            <button class="layui-btn" lay-event="add">添加</button>
+        </div>
+    </script>
+
+    <script src="/layuiadmin/layui/layui.js"></script>
+    <script type="text/javascript">
+
+        layui.config({
+            base: '/layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: '/lib/index' //主入口模块
+        }).use(['jquery', 'layer', 'form', 'table'],function () {
+            var $ = layui.jquery;
+            var layer = layui.layer;
+            var form = layui.form;
+            var table = layui.table;
+
+            // 数据分页显示
+            table.render({
+                id: 'classTable'
+                , elem: '#classTable'
+                , height: 550
+                , toolbar: '#classToolBar'
+                , defaultToolbar: ['filter', 'print', 'exports']
+                , url: '/contact/all' //数据接口
+                , page: true //开启分页
+                , cols: [
+                    [ //表头
+                        {type: 'checkbox', fixed: 'left'}
+                        , {field: 'id', title: 'ID', sort: true, align: 'center'}
+                        , {field: 'realname', title: '姓名', sort: true, align: 'center'}
+                        , {field: 'phone', title: '电话', sort: true, align: 'center'}
+                        , {fixed: 'right', title: '短信', toolbar: "#postBar", width: 150, align: 'center'}
+                        , {fixed: 'right', title: '操作', toolbar: "#classBar", width: 180, align: 'center'}
+                    ]
+                ]
+            });
+
+
+            // 搜索框
+            form.on('submit(LAY-user-back-search)', function(data){
+                var field = data.field //当前容器的全部表单字段，名值对形式：{name: value}
+                table.reload('classTable', {
+                    where: field
+                });
+            });
+
+
+            //监听事件 添加
+            table.on('toolbar(classTable)', function(obj){
+                var checkStatus = table.checkStatus(obj.config.id);
+                switch(obj.event){
+                    case 'add':
+                        layer.open({
+                            type: 1,
+                            title: "添加联系人",
+                            content: $("#addClass"),
+                            area: ['600px', '400px'],
+                            fixed: true, //固定
+                            resize: false,
+                            scrollbar: false,
+                            shadeClose: true,
+                            move: false,
+                            btn: ['确定添加', '取消'],
+                            // 确定按钮回调方法
+                            yes: function (index, layero) {
+                                $.post("/contact/insert", {
+                                    realname: $("#realname").val(),
+                                    phone: $("#phone").val(),
+                                }, function (res) {
+                                    if (res > 0){
+                                        layer.close(index);
+                                        layer.msg("添加成功！");
+
+                                        // 重新渲染整个表格
+                                        table.reload('classTable', {
+                                            where: []
+                                        });
+                                    } else {
+                                        layer.open({
+                                            title: '提示',
+                                            content: "添加失败，请重新再试！"
+                                        })
+                                    }
+                                })
+                            }
+
+                        });
+                        break;
+                };
+            });
+
+
+            // 监听操作工具条
+            // 监听工具条
+            table.on('tool(classTable)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+                var data = obj.data; //获得当前行数据
+                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+
+                if(layEvent === 'detail'){ //查看
+                    // 展示数据
+                    $("#realnameShow").val(data.realname);
+                    $("#phoneShow").val(data.phone);
+                    // 弹窗内容
+                    layer.open({
+                        type: 1,
+                        title: "联系人信息",
+                        content: $("#ClassDetail"),
+                        area: ['600px', '400px'],
+                        fixed: true, //固定
+                        resize: false,
+                        scrollbar: false,
+                        shadeClose: true,
+                        move: false,
+                        btn: ['关闭'],
+                        yes: function (index, layero) {
+                            //如果设定了yes回调，需进行手工关闭
+                            layer.close(index);
+                        }
+                    });
+                } else if(layEvent === 'del'){ //删除
+                    layer.confirm('确认删除？', {icon: 3, title: '提示'}, function(index){
+                        $.post({
+                            url: "/contact/delete",
+                            data: {
+                                'id': data.id
+                            },
+                            success: function(res) {
+                                if (res > 0){
+                                    layer.close(index);
+                                    layer.msg('删除成功!');
+                                    //重新渲染
+                                    table.reload('classTable', {
+                                        where: []
+                                    });
+                                } else {
+                                    layer.open({
+                                        title: '提示',
+                                        content: '删除失败!,请重试。'
+                                    })
+                                }
+                            }
+                        })
+                    });
+                } else if(layEvent === 'edit'){ //编辑
+
+                    // 展示数据
+                    $("#classifyname").val(data.classifyname);
+                    $("#explains").val(data.explains);
+
+                    layer.open({
+                        type: 1,
+                        title: "编辑分类",
+                        content: $("#addClass"),
+                        area: ['600px', '400px'],
+                        fixed: true, //固定
+                        resize: false,
+                        scrollbar: false,
+                        shadeClose: true,
+                        move: false,
+                        btn: ['确定更新', '取消'],
+                        // 确定按钮回调方法
+                        yes: function (index, layero) {
+                            $.post("/contact/update", {
+                                id:data.id,
+                                realname: $("#realname").val(),
+                                phone: $("#phone").val(),
+                            }, function (res) {
+                                if (res > 0){
+                                    layer.close(index);
+                                    layer.msg("更新成功！");
+                                    // 重新渲染
+                                    table.reload('classTable', {
+                                        where: []
+                                    });
+                                } else {
+                                    layer.open({
+                                        title: '提示',
+                                        content: "更新失败，请重新再试！"
+                                    })
+                                }
+                            })
+                        }
+                    });
+                }else if(layEvent === 'post'){
+                    layer.confirm('确认向用户发送水压过低的信息吗？', {icon: 3, title: '提示'}, function(index){
+                        $.post({
+                            url: "/sms/send",
+                            data: {
+                                'mobile': data.phone
+                            },
+                            success: function(res) {
+                                if (res > 0){
+                                    layer.close(index);
+                                    layer.msg('发送成功!');
+                                } else {
+                                    layer.open({
+                                        title: '提示',
+                                        content: '发送失败!,请重试。'
+                                    })
+                                }
+                            }
+                        })
+                    });
+                }
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

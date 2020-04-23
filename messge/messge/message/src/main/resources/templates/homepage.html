@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>homepage</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+</head>
+<style type="text/css">
+    .headimgSize{
+        height: 30px;
+        width: 30px;
+        border-radius: 20px;
+        margin-right: 6px;
+    }
+
+</style>
+<body>
+
+<div class="layui-fluid layui-form">
+    <div class="layui-row layui-col-space12">
+        <div class="layui-col-md9">
+            <div class="layui-card" style="height: 600px">
+                <div class="layui-card-header">系统通知</div>
+                <div class="layui-card-body">
+                    <div class="layui-form-item" style="margin-left: 95px;width: 830px;">
+                        <!--添加附件-->
+                        <div class="layui-card">
+                            <div class="layui-card-body">
+                                <h3>暂无通知</h3>
+                           <!--     <div class="layui-upload">
+                                    <button type="button" class="layui-btn " id="upload-List">添加音频</button>
+                                        <div class="layui-input-inline" style="width: 250px;">
+                                            <select id="classifyid" name="classifyid"   lay-filter="audio">
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                    <div class="layui-upload-list">
+                                        <table class="layui-table">
+                                            <thead>
+                                            <tr><th>文件名</th>
+                                                <th>大小</th>
+                                                <th>状态</th>
+                                                <th>操作</th>
+                                            </tr></thead>
+                                            <tbody id="upload-ListBox"></tbody>
+                                        </table>
+                                    </div>
+                                    <button onclick="alert('正在上传，转换音频中请勿重复操作!');" type="button" class="layui-btn layui-btn-primary" id="test-upload-testListAction">开始上传</button>
+                                </div>-->
+                 <!--               <div class="layui-form-item">
+                                    <label class="layui-form-label">姓名</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" id="realname" name="realname" style="width: 250px;" lay-verify="required"
+                                               placeholder="请输入姓名" class="layui-input ">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-form-text">
+                                    <label class="layui-form-label">电话号码</label>
+                                    <div class="layui-input-block" style="width: 450px;">
+                                        <input type="text" id="phone" name="phone" style="width: 250px;" lay-verify="required"
+                                               placeholder="请输入联系人电话" class="layui-input ">
+                                    </div>
+                                    <button style="margin-left: 150px;margin-top: 20px;width: 150px;" type="button" class="layui-btn" id="test-upload-testListAction">发送信息</button>
+                                </div>-->
+                             <!--   <img src="src/main/resources/static/img/tim.jpg">-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md3">
+            <div class="layui-card" style="height: 600px;">
+                <div class="layui-card-header">系统日历</div>
+                <div class="layui-card-body">
+                    <div class="site-demo-laydate">
+                        <div class="layui-inline" id="showDate"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="/layuiadmin/layui/layui.js"></script>
+<script src="/layuiadmin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: '/lib/index' //主入口模块
+    }).use(['index', 'form', 'laydate', 'table','upload','jquery'], function () {
+        var $=layui.jquery;
+        var laydate = layui.laydate;
+        var table = layui.table;
+        var upload=layui.upload;
+        var form=layui.form;
+
+        $(function () {
+            $("#classifyid").html("<option value=\"\"></option>");
+            $.post("/classify/allNotPage",{},function (data) {
+                $.each(data, function (index, item) {
+                    $("#classifyid").append("<option value="+item.id+">"+item.classifyname+"</option>");// 下拉菜单里添加元素
+                });
+                layui.form.render("select");//重新渲染所有的下拉框
+            });
+        });
+
+        form.on('select(audio)', function(data){
+            console.log(data.elem); //得到select原始DOM对象
+            console.log(data.value); //得到被选中的值]
+            $("#classifyid").val(data.value);
+            $.post("/classify/setId",{
+                "classifyid":data.value
+            },function (res) {
+
+            });
+            states=data.value;
+            console.log(data.othis); //得到美化后的DOM对象
+        });
+        //多文件列表示例
+        var demoListView = $('#upload-ListBox')
+            ,uploadListIns = upload.render({
+            elem: '#upload-List'
+            ,url: '/upload/file'
+            ,accept: 'file'
+            ,multiple: true
+            ,auto: false
+            ,bindAction: '#test-upload-testListAction'
+            ,choose: function(obj){
+                var selectVal=$("#classifyid").val();
+                if(selectVal!=null&&selectVal!=''){
+                var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+                //读取本地文件
+                obj.preview(function(index, file, result){
+                    var tr = $(['<tr id="upload-'+ index +'">'
+                        ,'<td>'+ file.name +'</td>'
+                        ,'<td>'+ (file.size/1014).toFixed(1) +'kb</td>'
+                        ,'<td>等待上传</td>'
+                        ,'<td>'
+                        ,'<button class="layui-btn layui-btn-mini test-upload-demo-reload layui-hide">重传</button>'
+                        ,'<button class="layui-btn layui-btn-mini layui-btn-danger test-upload-demo-delete">删除</button>'
+                        ,'</td>'
+                        ,'</tr>'].join(''));
+
+                    //单个重传
+                    tr.find('.test-upload-demo-reload').on('click', function(){
+                        obj.upload(index, file);
+                    });
+
+                    //删除
+                    tr.find('.test-upload-demo-delete').on('click', function(){
+                        delete files[index]; //删除对应的文件
+                        tr.remove();
+                        uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+                    });
+
+                    demoListView.append(tr);
+                });
+                }else {
+                    layer.open({
+                        title: '提示',
+                        content: "请先选择分类再试！"
+                    })
+                }
+            }
+            ,done: function(res, index, upload){
+                if(res.code == 0){ //上传成功
+                    layer.open({
+                        title:"转换后的内容",
+                        content:res.data.switchContent
+                    })
+                    var tr = demoListView.find('tr#upload-'+ index)
+                        ,tds = tr.children();
+                    tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+                    tds.eq(3).html(''); //清空操作
+                    appendixUrl=appendixUrl+res.data.src+",";
+                    return delete this.files[index]; //删除文件队列已经上传成功的文件
+                }
+                this.error(index, upload);
+            }
+            ,error: function(index, upload){
+                layer.open({
+                    title: '提示',
+                    content: "上传，转换失败请重试！"
+                })
+                var tr = demoListView.find('tr#upload-'+ index)
+                    ,tds = tr.children();
+                tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+                tds.eq(3).find('.test-upload-demo-reload').removeClass('layui-hide'); //显示重传
+            }
+        });
+
+        //直接嵌套显示
+        laydate.render({
+             elem: '#showDate'
+            , position: 'static'
+            , btns: ['now']
+            , calendar: true//显示节假日
+        });
+
+    });
+</script>
+
+</body>
+</html>

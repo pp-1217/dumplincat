@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>短信管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+
+</head>
+<body class="layui-layout-body">
+
+<div id="LAY_app">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item layadmin-flexible" lay-unselect>
+                    <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                        <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" layadmin-event="refresh" title="刷新">
+                        <i class="layui-icon layui-icon-refresh-3"></i>
+                    </a>
+                </li>
+              <!--  <li ><a href="javascript:;">我的消息<span class="layui-badge">99+</span></a></li>-->
+            </ul>
+
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item" id="time" style="color: black;font-size: 15px;"  ></li>
+                <li class="layui-nav-item" style="margin-right: -15px">
+                    <a href="javascript:;">
+<!--                         src="http://t.cn/RCzsdCq"  @{'~/'+${m2.menuhref}}   -->
+<!--                        <img  th:src="${session.user.headimg}"  lay-src=""  class="layui-nav-img">-->
+                           <span  th:text="${session.user.username}"></span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a lay-href="/page/password">密码重置</a></dd>
+                    </dl>
+<!--                    <dl th:if="${session.user.roleid}!=20190104" class="layui-nav-child">-->
+<!--                        <dd><a lay-href="/page/setting/userinfo">个人信息</a></dd>-->
+<!--                        <dd><a lay-href="/page/setting/password">密码重置</a></dd>-->
+<!--                    </dl>-->
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;">退出</a></li>
+            </ul>
+
+        </div>
+
+        <!-- 侧边菜单 -->
+        <div class="layui-side layui-side-menu">
+            <div class="layui-side-scroll">
+                <div class="layui-logo" lay-href="">
+                    <span>短信管理系统</span>
+                </div>
+
+                <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+
+
+                    <!-- <i th:if="${m.icontype}==1" class="layui-icon layui-icon-home"></i>
+                             <i th:if="${m.icontype}==2" class="layui-icon layui-icon-user"></i>
+                             <i th:if="${m.icontype}==3" class="layui-icon layui-icon-app"></i>
+                             <i th:if="${m.icontype}==5" class="layui-icon layui-icon-senior"></i>
+                             <i th:if="${m.icontype}==4" class="layui-icon layui-icon-auz"></i>-->
+
+                    <li  class="layui-nav-item">
+                        <!-- <a th:if="${m.fatherid}==0"  th:text="${m.menuname}" href="javascript:;"></a> -->
+                        <a   href="javascript:;" lay-tips="" lay-direction="2">
+                            <!-- 此处判断该用啥图标 -->
+                            <i class="layui-icon layui-icon-app"></i>
+                            <cite>短信管理</cite>
+                        </a>
+                        <dl   class="layui-nav-child">
+                            <dd>
+                                <a th:lay-href="@{/page/contact}"  lay-href="">联系人管理</a>
+                            </dd>
+                            <dd>
+                                <a th:lay-href="@{/page/contactRecord}"  lay-href="">短信记录</a>
+                            </dd>
+                        </dl>
+                        <a   href="javascript:;" lay-tips="" lay-direction="3">
+                            <!-- 此处判断该用啥图标 -->
+                            <i class="layui-icon layui-icon-user"></i>
+                            <cite >个人设置</cite>
+                        </a>
+                        <dl   class="layui-nav-child">
+                            <dd>
+                                <a th:lay-href="@{/page/password}" lay-href="">密码重置</a>
+                            </dd>
+                        </dl>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+        <!-- 页面标签 -->
+        <div class="layadmin-pagetabs" id="LAY_app_tabs">
+            <div class="layui-icon layadmin-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+            <div class="layui-icon layadmin-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+            <div class="layui-icon layadmin-tabs-control layui-icon-down">
+                <ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+                    <li class="layui-nav-item" lay-unselect>
+                        <a href="javascript:;"></a>
+                        <dl class="layui-nav-child layui-anim-fadein">
+                            <dd layadmin-event="closeThisTabs"><a href="javascript:;">关闭当前标签页</a></dd>
+                            <dd layadmin-event="closeOtherTabs"><a href="javascript:;">关闭其它标签页</a></dd>
+                            <dd layadmin-event="closeAllTabs"><a href="javascript:;">关闭全部标签页</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+<!--            右侧默认页面-->
+            <div class="layui-tab" lay-unauto lay-allowClose="true" lay-filter="layadmin-layout-tabs">
+                <ul class="layui-tab-title" id="LAY_app_tabsheader">
+                    <li lay-id="/homepage" lay-attr="home/console.html" class="layui-this"><i class="layui-icon layui-icon-home"></i></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- 主体内容 -->
+        <div class="layui-body" id="LAY_app_body">
+            <div class="layadmin-tabsbody-item layui-show">
+                <iframe src="/page/homepage" frameborder="0" class="layadmin-iframe"></iframe>
+            </div>
+        </div>
+
+        <!-- 辅助元素，一般用于移动设备下遮罩 -->
+        <div class="layadmin-body-shade" layadmin-event="shade"></div>
+    </div>
+</div>
+
+<script src="/layuiadmin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: '/lib/index' //主入口模块
+    }).use(['index','jquery'],function () {
+        var $=layui.jquery;
+        var index=layui.index;
+        $(function () {
+            function currentTime(){
+                var d=new Date(),str='';
+                str+=d.getFullYear()+'&nbsp年&nbsp';
+                str+=d.getMonth() + 1+'&nbsp月 ';
+                str+=d.getDate()+'&nbsp日 ';
+                str+=d.getHours()+':&nbsp;';
+                str+=d.getMinutes()+':&nbsp;';
+                str+= d.getSeconds();
+                return str;
+            }
+            setInterval(function(){$('#time').html(currentTime())},1000);
+        });
+    });
+
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>短信记录</title>
+    <link rel="stylesheet" href="/css/layui.css">
+</head>
+<body>
+   <!--  数据表格  -->
+    <table class="layui-hide" id="classTable" lay-filter="classTable"></table>
+
+    <!--  操作三剑客  -->
+    <script type="text/html" id="classBar">
+      <!--  <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>-->
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+    <script src="/layuiadmin/layui/layui.js"></script>
+    <script type="text/javascript">
+
+        layui.config({
+            base: '/layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: '/lib/index' //主入口模块
+        }).use(['jquery', 'layer', 'form', 'table'],function () {
+            var $ = layui.jquery;
+            var layer = layui.layer;
+            var form = layui.form;
+            var table = layui.table;
+
+            // 数据分页显示
+            table.render({
+                id: 'classTable'
+                , elem: '#classTable'
+                , height: 550
+                , toolbar: '#classToolBar'
+                , defaultToolbar: ['filter', 'print', 'exports']
+                , url: '/record/all' //数据接口
+                , page: true //开启分页
+                , cols: [
+                    [ //表头
+                        {type: 'checkbox', fixed: 'left'}
+                        , {field: 'contactid', title: 'ID', sort: true,width: 150 , align: 'center'}
+                        , {field: 'realname', title: '姓名', sort: true,width: 150 , align: 'center'}
+                        , {field: 'phone', title: '电话', sort: true,width: 150 , align: 'center'}
+                        , {field: 'content', title: '内容', sort: true,width: 300 , align: 'center'}
+                        , {field: 'posttime', title: '发送时间', sort: true, width: 180 ,align: 'center'}
+                        , {field: 'status', title: '状态(1成功2失败)', sort: true,width: 150 ,  align: 'center'}
+                        , {fixed: 'right', title: '操作', toolbar: "#classBar", width: 180, align: 'center'}
+                    ]
+                ]
+            });
+
+
+            // 搜索框
+            form.on('submit(LAY-user-back-search)', function(data){
+                var field = data.field //当前容器的全部表单字段，名值对形式：{name: value}
+                table.reload('classTable', {
+                    where: field
+                });
+            });
+
+            // 监听操作工具条
+            // 监听工具条
+            table.on('tool(classTable)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+                var data = obj.data; //获得当前行数据
+                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+
+                   if(layEvent === 'del'){ //删除
+                    layer.confirm('确认删除？', {icon: 3, title: '提示'}, function(index){
+                        $.post({
+                            url: "/record/delete",
+                            data: {
+                                'id': data.contactid
+                            },
+                            success: function(res) {
+                                if (res > 0){
+                                    layer.close(index);
+                                    layer.msg('删除成功!');
+                                    //重新渲染
+                                    table.reload('classTable', {
+                                        where: []
+                                    });
+                                } else {
+                                    layer.open({
+                                        title: '提示',
+                                        content: '删除失败!,请重试。'
+                                    })
+                                }
+                            }
+                        })
+                    });
+                }
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

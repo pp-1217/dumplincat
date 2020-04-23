@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>短信管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/login.css" media="all">
+</head>
+<body>
+
+<div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
+
+    <div class="layadmin-user-login-main">
+        <div class="layadmin-user-login-box layadmin-user-login-header">
+            <h2>短信管理系统</h2>
+<!--            <p></p>-->
+        </div>
+        <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
+            <div class="layui-form-item">
+                <label class="layadmin-user-login-icon layui-icon layui-icon-username"
+                       for="LAY-user-login-username"></label>
+                <input type="text" name="username" id="LAY-user-login-username" lay-verify="required"
+                       placeholder="手机号/用户名" class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                <label class="layadmin-user-login-icon layui-icon layui-icon-password"
+                       for="LAY-user-login-password"></label>
+                <input type="password" name="password" id="LAY-user-login-password" lay-verify="required"
+                       placeholder="密码" class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-row">
+                    <div class="layui-col-xs7">
+                        <label class="layadmin-user-login-icon layui-icon layui-icon-vercode"
+                               for="LAY-user-login-vercode"></label>
+                        <input type="text" name="vercode" id="LAY-user-login-vercode" lay-verify="required"
+                               placeholder="图形验证码" class="layui-input">
+                    </div>
+                    <div class="layui-col-xs5">
+                        <div style="margin-left: 10px;">
+                            <img src="/verifiCode" class="layadmin-user-login-codeimg" id="LAY-user-get-vercode">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item" style="margin-bottom: 20px;">
+               <!-- <a href="/page/regist"  class="layadmin-user-jump-change layadmin-link" >注册帐号</a>-->
+                <a href="javascript:reImg();" class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">换一张</a>
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="LAY-user-login-submit">登 入</button>
+            </div>
+            <div class="layui-trans layui-form-item layadmin-user-login-other">
+                <!-- <label>社交账号登入</label>
+                <a href="javascript:;"><i class="layui-icon layui-icon-login-qq"></i></a>
+                <a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>
+                <a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a> --> -->
+
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-trans layadmin-user-login-footer">
+
+        <p>© 2020 <a href="javascript:;" target="_blank">版权信息</a></p>
+        <p>
+            <!--  <span><a href="http://www.layui.com/admin/#get" target="_blank">获取授权</a></span>
+             <span><a href="http://www.layui.com/admin/pro/" target="_blank">在线演示</a></span>
+             <span><a href="http://www.layui.com/admin/" target="_blank">前往官网</a></span> -->
+        </p>
+    </div>
+
+
+</div>
+
+<script src="/layuiadmin/layui/layui.js"></script>
+<script>
+    //更换验证码
+    function reImg() {
+        var img = document.getElementById("LAY-user-get-vercode");
+        var newSrc = "/verifiCode?rnd=" + Math.random();
+        img.src = newSrc;
+    }
+
+    layui.config({
+        base: '/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['jquery', 'form'], function () {
+        var $ = layui.jquery
+            , form = layui.form;
+        //渲染
+        form.render();
+        //提交
+        form.on('submit(LAY-user-login-submit)', function (obj) {
+            $.ajax({
+                url: "/user/login",
+                type: 'post',
+                data: obj.field,
+                success: function (result) {
+                    //登陆成功0
+                    //登陆失败1
+                    if (result.state == 1) {
+                        var message = result.message;
+                        layer.msg(message, {
+                            offset: '15px'
+                            , icon: 2
+                            , time: 1000
+                        }, function () {
+                            return;
+                        });
+                    } else {
+                        layer.msg('登入成功', {
+                            offset: '15px'
+                            , icon: 1
+                            , time: 1000
+                        }, function () {
+                            location.href = "/page/index"; //后台主页
+                        });
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

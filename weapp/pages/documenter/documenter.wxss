@@ -1,0 +1,170 @@
+/* pages/documenter/documenter.wxss */
+
+.tab-selector-banner {
+    display: flex;
+    flex-direction: row;
+    background-color: #cdcdcd;
+    margin-top: 10rpx;
+}
+
+.tab-selector-banner text {
+    /* color: red; */
+}
+
+.tab-selector {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding-top: 12rpx;
+    padding-bottom: 12rpx;
+}
+
+.tab-selector>image {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.tab-upload {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rpx;
+    background-color: #fff;
+    padding-top: 12rpx;
+    padding-bottom: 12rpx;
+}
+
+.videos {
+    background: #f8f7f5;
+}
+
+.video-item {
+    background: #fff;
+    width: 96%;
+    margin-left: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.margin-more {
+    margin-top: 30rpx;
+}
+
+.margin-top {
+    margin-top: 15rpx;
+}
+
+#myVideo {}
+
+video {
+    width: 720rpx;
+}
+
+.video-item-title {
+    width: 100%;
+    padding-bottom: 10rpx;
+    padding-top: 10rpx;
+    padding-left: 6rpx;
+}
+
+.video-bottom-title {
+    padding-bottom: 10rpx;
+    padding-top: 10rpx;
+    display: flex;
+    flex-direction: row;
+    padding-left: 6rpx;
+    font-size: 10pt;
+}
+
+.hidden-class {
+    visibility: hidden;
+}
+
+.img-parent-view {
+    width: 100%;
+}
+
+.video-menban {
+    background: #F9F9F9;
+    width: 720rpx;
+    height: 225px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -229px;
+}
+
+.video-menban-bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.video-parent {
+    position: relative;
+    background: #9b9b9b;
+    width: 100%;
+    height: 405rpx;
+}
+
+.video-menban-play {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.play {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.cover-image {
+    width: 40px;
+    height: 40px;
+    margin: 5px auto;
+}
+
+/* 111111 */
+
+.video {
+    margin-bottom: 40rpx;
+    position: relative;
+}
+
+.model-img {
+    width: 100%;
+    height: 420rpx;
+}
+
+.model-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.play-icon {
+    margin: 28rpx 42rpx;
+    border-top: 26rpx solid transparent;
+    border-left: 36rpx solid #fff;
+    border-bottom: 22rpx solid transparent;
+}
+
+image {
+    width: 60rpx;
+    height: 60rpx;
+}

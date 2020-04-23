@@ -1,0 +1,34 @@
+@import 'styles/basscss.min.wxss';
+/**app.wxss**/
+.container {
+  background: #F9F9F9;
+  overflow: hidden;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+zan-loadmore {
+  margin: 15px;
+  background: #fff;
+}
+.visibility-hidden{
+visibility:hidden;
+}
+
+.van-tabbar {
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+}
+
+.van-tabbar--fixed {
+  left: 0;
+  bottom: 0;
+  position: fixed;
+}
+.tiny {
+  background: rgba(30, 30, 40, 0.7) !important;
+}
+.btn-bottom{
+  margin: 20rpx;
+  padding: 40rpx;
+}

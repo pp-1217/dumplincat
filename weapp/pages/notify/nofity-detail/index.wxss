@@ -1,0 +1,64 @@
+.wrapper {
+    background-color: #ededed;
+    width: 100%;
+    height: 100vh;
+}
+
+.item-list {
+    height: 100vh;
+    box-sizing: border-box;
+    padding-bottom: 10vh;
+}
+
+.item {
+    color: #ccc;
+    line-height: 1.5;
+    font-size: 25rpx;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+.black {
+    color: #000;
+}
+
+.avatar {
+    height: 60rpx;
+    width: 60rpx;
+    border-radius: 50%;
+}
+
+.pic-list image {
+    width: 100rpx;
+    height: 80rpx;
+}
+
+.btn-answer {
+    color: #fff;
+    background-color: #488FE1;
+}
+
+.btn-finish{
+    color:#fff;
+    background-color: #D0021B;
+}
+
+.evalute{
+    background-color: #fff;
+}
+
+.evalute_tip{
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.btn-submit{
+    background-color: #D0021B;
+    color: #fff;
+    font-size: 32rpx;
+}
+
+.asset{
+    width: 300rpx;
+    height: 200rpx;
+}

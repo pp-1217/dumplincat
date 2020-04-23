@@ -1,0 +1,38 @@
+.wrapper {
+    height: 100vh;
+    overflow: hidden;
+}
+
+video {
+    width: 100%;
+}
+
+.comment {
+    padding: 20rpx;
+    color: #777;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.comment_top {
+    font-size: 26rpx;
+}
+
+.comment_top .avatar image{
+    height: 50rpx;
+    width: 50rpx;
+    border-radius: 50%;
+}
+
+.comment_top .comment_username {
+    font-size: 30rpx;
+}
+
+.comment_bottom {
+    font-size: 20rpx;
+}
+
+.btn-wrapper{
+    border-top: 1px solid #ccc;
+    font-size: 26rpx;
+    color: #777;
+}

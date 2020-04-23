@@ -1,0 +1,79 @@
+<!--pages/userinfo/userinfo.wxml-->
+<view class='container'>
+  <zan-panel title="{{local_lang.info}}">
+    <zan-cell-group>
+      <zan-field
+        title="{{ config.base.name.title }}"
+        placeholder="{{ config.base.name.placeholder }}"
+        disabled="{{true}}"
+        value="{{ userInfo.name }}"
+      >
+      </zan-field>
+
+      <zan-field
+        title="{{ config.base.comname.title }}"
+        placeholder="{{ config.base.comname.placeholder }}"
+        disabled="{{true}}"
+        value="{{ userInfo.company }}"
+      >
+      </zan-field>
+
+    
+      <zan-field
+        title="{{ config.base.address.title }}"
+        type="{{ config.base.address.type }}"
+        placeholder="{{ config.base.address.placeholder }}"
+        disabled="{{true}}"
+        maxlength="50"
+        value="{{ userInfo.address }}"
+      >
+      </zan-field>
+
+
+      <zan-field
+        title="{{ config.base.tel.title }}"
+        placeholder="{{ config.base.tel.placeholder }}"
+        input-type="{{ config.base.tel.inputType }}"
+        disabled="{{true}}"
+        value="{{ userInfo.phone }}"
+      >
+      </zan-field>
+
+
+
+
+      <zan-field
+        title="{{ config.base.level.title }}"
+        placeholder="{{ config.base.level.placeholder }}"
+        disabled="{{true}}"
+        value="{{ value }}"
+        value="{{ userInfo.showLevelName }}"
+      >
+      </zan-field>
+
+
+      <zan-field
+              title="{{local_lang.group}}"
+              disabled="{{true}}"
+              value="{{ value }}"
+              value="{{ userInfo.showRoleName }}"
+            >
+            </zan-field>
+
+
+            <zan-field
+                    title="{{local_lang.classification}}"
+                    disabled="{{true}}"
+                    value="{{ value }}"
+                    value="{{ userInfo.showBusName }}"
+                  >
+                  </zan-field>
+    </zan-cell-group>
+  </zan-panel>
+  
+  <zan-button-group wx:if="{{false}}">
+    <zan-button type="primary" bind:btnclick="clearInput">{{local_lang.need_modify}}</zan-button>
+  </zan-button-group>
+
+
+</view>

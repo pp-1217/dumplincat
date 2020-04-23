@@ -1,0 +1,115 @@
+<!--pages/authentication/authentication.wxml-->
+<view class='container'> 
+
+ <zan-panel title="{{local_lang.info}}">
+    <zan-cell-group>
+      <zan-field
+        title="{{ config.base.name.title }}"
+
+        focus="{{ config.base.name.focus }}"
+        value="{{ data.name }}"
+        disabled="false"
+      >
+      </zan-field>
+      <zan-field
+        title="{{ config.base.sex.title }}"
+
+        error="{{ config.base.sex.error }}"
+        input-type="{{ config.base.sex.inputType }}"
+         disabled="false"
+         value="{{data.sex==1?'男':'女'}}"
+      >
+      </zan-field>
+      <zan-field
+        title="{{ config.base.age.title }}"
+        type="{{ config.base.age.type }}"
+
+         disabled="false"
+        value="{{data.age}}"
+      >
+      </zan-field>
+      <zan-field
+        title="{{ config.base.place.title }}"
+        value="{{ config.base.place.value }}"
+
+          disabled="false"
+           value="{{data.nativePlace}}"
+      >
+      </zan-field>
+       <zan-field
+        title="{{ config.base.tel.title }}"
+        value="{{ config.base.tel.value }}"
+
+          disabled="false"
+           value="{{data.phone}}"
+      >
+      </zan-field>
+       <zan-field
+        title="{{ config.base.company.title }}"
+        value="{{ config.base.company.value }}"
+
+          disabled="false"
+           value="{{data.company}}"
+      >
+      </zan-field>
+       <zan-field
+        maxlength="50"
+        title="{{ config.base.address.title }}"
+        value="{{ config.base.address.value }}"
+
+          disabled="false"
+           value="{{data.address}}"
+      >
+      </zan-field>
+    </zan-cell-group>
+  </zan-panel>
+
+  <zan-panel title="{{local_lang.vitae}}" wx:if="{{data.docUrlList.length>0}}">
+    <zan-cell-group wx:for="{{data.docUrlList}}">
+
+        <zan-cell title="{{local_lang.vitae}}" value="" bindtap="onFileSelect" data-url="{{item.url}}">
+      <zan-icon slot="icon" type="records"></zan-icon>
+    </zan-cell>
+
+
+      <!-- <zan-field
+
+        title="{{ config.person.authentitication.title }}"
+        placeholder="{{ config.person.authentitication.placeholder }}"
+        disabled="{{ config.person.authentitication.disabled }}"
+        value="{{ data.category }}"
+      >
+      </zan-field> -->
+      </zan-cell-group>
+      </zan-panel>
+
+<zan-panel title="{{local_lang.enclosure}}">
+    <view class='auditing-images'>
+
+    <view class='auditing-image-item' wx:for="{{data.fileUrlList}}" wx:key="key" bindtap='onVideoSelected' data-index='{{index}}'>
+    <image mode='aspectFit'  src="{{item.imgCoverUrl}}"></image>
+    </view>
+      
+    </view>
+
+    
+
+      </zan-panel>
+
+<zan-panel title="{{local_lang.visual_screen}}" wx:if="{{false}}">
+    <view class='auditing-video'>
+      <video></video>
+    </view>
+
+  
+
+      
+
+      </zan-panel>
+
+      <view  class='btn-commit'>
+  <zan-button  bindtap='onCommitClick' type="primary">{{local_lang.start_review}}</zan-button>
+</view>
+
+</view>
+<zan-toptips id="zan-toptips" content="{{ content }}" is-show="{{ $zanui.toptips.show }}"/>

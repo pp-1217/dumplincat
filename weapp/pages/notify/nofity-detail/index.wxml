@@ -1,0 +1,55 @@
+<dialog visible='{{visible_finish}}'>
+    <view class="evalute flex flex-column items-center p2">
+        <view class="evalute_tip">{{local_lang.score}}</view>
+        <rate bindchange='setScore' rate="{{score}}" class='my2'></rate>
+        <view bindtap='finishQuestion' class="btn-submit rounded px3 py1">{{local_lang.sumbit}}</view>
+    </view>
+</dialog>
+<view class="wrapper relative">
+    <view class="item-list overflow-auto pt1">
+        <block wx:for='{{msg_list}}' wx:key='id'>
+            <!-- 专家 -->
+            <view wx:if='{{item.createType===2}}' class="item p1 px1">
+                <view class="item_top my1 flex">
+                    <image src='{{expert_avatar_url}}' class="avatar mr1"></image>
+                    <view class="info">
+                        <view class='black'>{{expert_name}}</view>
+                        <view class="time">{{item.createTime}}</view>
+                    </view>
+                </view>
+                <view class="item_content black">{{item.content}}</view>
+                <view class="pic-list py2 clearfix">
+                    <block wx:for='{{item.fileUrlList}}' wx:key='id'>
+                        <image wx:if='{{item.type===2}}' src='{{item.url}}' class='asset rounded left m1'></image>
+                        <video wx:else class='asset rounded left m1' src="{{item.url}}"></video>
+                    </block>
+                </view>
+            </view>
+            <!-- 用户 -->
+            <view wx:else='{{item.createType===2}}' class="item p1 px1">
+                <view class="item_top my1 flex justify-end">
+                    <view class="info">
+                        <view class='black right-align'>{{user_name}}</view>
+                        <view class="time">{{item.createTime}}</view>
+                    </view>
+                    <image src='{{user_avatar_url}}' class="avatar ml1"></image>
+                </view>
+                <view class="item_content black right-align">{{item.content}}</view>
+                <view class="pic-list py2 clearfix">
+                    <block wx:for='{{item.fileUrlList}}' wx:key='id'>
+                        <image bindtap='previewImage' data-url='{{item.url}}' wx:if='{{item.type===2}}' src='{{item.url}}' class='asset rounded right m1'></image>
+                        <video wx:else class='asset rounded right m1' src="{{item.url}}"></video>
+                    </block>
+                </view>
+            </view>
+        </block>
+    </view>
+    <!-- bottom-bar -->
+    <view wx:if='{{status!=="2"}}' class="btn-wrapper col-12 flex absolute center bottom-0">
+        <block wx:if='{{is_user}}'>
+            <view bindtap='toQuestion' class="btn-answer flex-auto py2">{{local_lang.con_ask}}</view>
+            <view bindtap='openFinishDialog' class="btn-finish flex-auto py2">{{local_lang.complete}}</view>
+        </block>
+        <view wx:else bindtap='toQuestion' class="btn-answer flex-auto py2">{{local_lang.answer}}</view>
+    </view>
+</view>

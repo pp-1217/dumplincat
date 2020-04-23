@@ -1,0 +1,45 @@
+<!--pages/mallparts/mallparts.wxml-->
+<view class='container'>
+
+  <zan-search
+          placeholder="{{local_lang.search}}"
+          searchStyle="height: 88rpx; padding: 0 30rpx; background: {{ searchbg || '#F2F2F2' }};"
+          inputStyle="height: 56rpx; border-radius: 8rpx;"
+          keyword="{{ inputValue }}"
+          focus="{{ false }}"
+          bindchange="searchChange"
+  />
+
+  <view class="horizontal">
+    <!--分类导航栏-->
+    <scroll-view wx:if="{{inputValue==''}}" class='left-navbar' scroll-y="true">
+      <view style=' font-size:10pt;' wx:for="{{screenArray}}" class="{{ currentTab == index ? 'active' : '' }}" wx:key="unique" bindtap="{{ currentTab != index ? 'navbarTap':'' }}" id="{{index}}" data-screenId="{{item.id}}">{{item.name}}
+      </view>
+
+    </scroll-view>
+
+    <scroll-view id="right" scroll-y="true" scroll-top="{{scrollTop}}" bindscrolltolower="onScrollBottom" class="{{inputValue!=''?'clean-right':'right-navbar'}}">
+      <!--商品展示-->
+
+      <view class='mall-item' wx:for="{{dataTotal}}" wx:key="id" >
+        <view class='mall-item-left'>
+          <image src='{{item.coverUrl}}' mode="aspectFit"></image>
+        </view>
+        <view class='mall-item-right'>
+          <text>{{item.name}}</text>
+          <view class='mall-item-right-bottom' wx:if="{{true}}">
+            <zan-tag type="danger" wx:if="{{item.priceRange}}">{{item.priceRange}}</zan-tag>
+            <zan-button bindtap='onBuyClick' size="mini" type="danger" data-index="{{index}}">{{local_lang.detail}}</zan-button>
+          </view>
+        </view>
+      </view>
+
+
+      <zan-loadmore type="text" text="{{loadText}}"></zan-loadmore>
+
+    </scroll-view>
+
+  </view>
+
+
+</view>

@@ -1,0 +1,101 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+.list-hor{
+  width: 100%;
+   height: 250rpx; 
+  display: flex;
+  flex-direction: row;
+  /* background-color: #aaa; */
+}
+.list-hor-item{
+  flex-grow: 1;
+  display: flex;
+  
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  margin: 1px;
+  width: 32.8%;
+}
+.list-hor-item-center{
+   display: flex;
+flex-direction: column;
+align-items: center;
+  justify-content: center;
+}
+.list-hor-item-center>image{
+  margin-top: 20rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+.list-hor-item-center>text{
+  flex-grow: 1;
+  margin-top: 10rpx;
+  font-size: 8pt;
+}
+.item-inter{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+margin-top: 40rpx;
+background-color: #fff;
+padding: 20rpx;
+}
+.item-inter>image{
+  width: 120rpx;
+  height: 120rpx;
+  background-color: #666;
+  flex-grow: 1;
+}
+.item-inter-text{
+  display: flex;
+  flex-direction: column;
+  margin-left: 8rpx;
+  flex-grow: 3;
+  padding-left: 10rpx;
+}
+/* .item-inter-text>text{
+  font-size: 8pt;
+} */
+.item-inter-title{
+font-size: 10pt;
+padding: 6rpx;
+}
+.item-inter-content{
+  font-size: 8pt;
+  padding: 6rpx;
+}
+zan-tag{
+  padding: 6rpx;
+}
+.right-top{
+  
+}
+.list-pics{
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: column;
+}
+.clean-flex{
+flex-grow: 0;
+}

@@ -1,0 +1,78 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/point/point",
+    "pages/purchase/purchase",
+    "pages/expert-advice/question-detail/index",
+    "pages/me/me",
+    "pages/notify/nofity-detail/index",
+    "pages/expert-advice/expert-list/index",
+    "pages/expert-advice/category-list/index",
+    "pages/documenter/documenter",
+    "pages/video-detail/index",
+    "pages/notify/nofity-list/index",
+    "pages/auditing/auditing",
+    "pages/repair/repair",
+    "pages/uploadtxt/uploadtxt",
+    "pages/rating/rating",
+    "pages/rating2/rating2",
+    "pages/authentication/authentication",
+    "pages/malldetail/malldetail",
+    "pages/logs/logs",
+    "pages/bill/bill",
+    "pages/userinfo/userinfo",
+    "pages/mallparts/mallparts",
+    "pages/authorize/index",
+    "pages/repairrecord/index",
+    "pages/billrecord/index",
+    "pages/pointrecord/index",
+    "pages/video/index",
+    "pages/applylist/index",
+    "pages/billrecordetail/index",
+    "pages/repairlist/index",
+    "pages/buylist/index",
+    "pages/imglist/index",
+    "pages/test/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#4090E2",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/pages/img/ic_home.png",
+        "selectedIconPath": "/pages/img/ic_home_selected.png"
+      },
+      {
+        "pagePath": "pages/bill/bill",
+        "text": "接单",
+        "iconPath": "/pages/img/ic_bill.png",
+        "selectedIconPath": "/pages/img/ic_bill_selected.png"
+      },
+      {
+        "pagePath": "pages/expert-advice/category-list/index",
+        "text": "问答",
+        "iconPath": "/pages/img/ic_chat.png",
+        "selectedIconPath": "/pages/img/ic_chat_active.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "/pages/img/ic_user.png",
+        "selectedIconPath": "/pages/img/ic_user_selected.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false,
+  "sitemapLocation": "sitemap.json"
+}

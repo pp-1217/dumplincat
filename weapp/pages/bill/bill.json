@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "接单",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "zan-tag": "/dist/tag/index",
+    "zan-dialog": "/dist/dialog/index",
+    "zan-loadmore": "/dist/loadmore/index",
+    "zan-toptips": "/dist/toptips/index",
+    "zan-toast": "/dist/toast/index",
+    "van-tabbar": "/dist/tabbar/index",
+    "van-tabbar-item": "/dist/tabbar-item/index"
+  }
+}

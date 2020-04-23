@@ -1,0 +1,65 @@
+<!--index.wxml-->
+<view class="container">
+
+  <view class="banner">
+    <swiper indicator-dots="true" autoplay="true" interval="5000" indicator-active-color="#2089DC" circular="true" bindchange="EventHandle" style="height:422rpx;">
+      <block wx:for="{{topUrls}}">
+        <swiper-item>
+          <image src="{{item.url}}" style="width:100%;" mode='widthFix'></image>
+
+           <!-- mode="aspectFit" -->
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class='list-hor'>
+
+    <view class='list-hor-item' wx:for="{{list}}"  bindtap='onItemClick' data-index='{{index}}' >
+      <view class='list-hor-item-center'>
+        <image src='{{imgUrl[index]}}'>
+        </image>
+        <text>{{list[index]}}</text>
+      </view>
+      
+      <zan-badge
+      wx:if="{{index==1&&authNum&&authNum!=0}}"
+        class="right-top"
+          background-color="#4b0"
+          box-shadow="none"
+          font-size="{{ 12 }}"
+        >{{authNum}}</zan-badge>
+
+    </view>
+  </view>
+
+  <view class='list-hor'>
+<!--  -->
+    <view class="{{(showMall||index!=-1)?'list-hor-item':'list-hor-item visibility-hidden'}}" wx:for="{{list1}}" bindtap='onItemClick1' data-index='{{index}}'>
+      <view class='list-hor-item-center'>
+        <image src='{{imgUrl[index+3]}}'></image>
+        <text>{{list1[index]}}</text>
+      </view>
+
+    </view>
+  </view>
+
+  <view class='item-inter' wx:if="{{false}}">
+    <image></image>
+    <view class='item-inter-text'>
+      <text class='item-inter-title'>{{local_lang.jwell_engineer_produce}}</text>
+      <text class='item-inter-content'>{{local_lang.know_something}}</text>
+      <zan-tag type="primary">我要了解</zan-tag>
+    </view>
+
+  </view>
+
+  <view class="list-pics">
+    <image wx:for="{{bottomUrls}}" wx:key="id" style="width:100%;" src='{{item.url}}' bindtap='onPicClick' data-id='{{item.id}}' mode='widthFix'>
+    
+    </image>
+
+  </view>
+
+
+</view>

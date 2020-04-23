@@ -1,0 +1,74 @@
+<!--pages/authentication/authentication.wxml-->
+<view class='container'>
+
+  <zan-panel title="{{local_lang.info}}">
+    <zan-cell-group>
+      <zan-field title="{{ config.base.name.title }}"
+                 placeholder="{{ config.base.name.placeholder }}" focus="{{ canModify?true:false }}"  value="{{ formdata.name }}" bind:change="handleZanFieldChange" data-key="name" right="{{true}}" disabled="{{!canModify}}">
+      </zan-field>
+
+      <zan-cell title="{{ config.base.sex.title }}" value="{{formdata.showSex}}" bindtap="onSelectSexClick" data-key="sex"/>
+
+      <zan-field wx:if="{{false}}" title="{{ config.base.sex.title }}" placeholder="{{ config.base.sex.placeholder }}" input-type="{{ config.base.sex.inputType }}" value="{{formdata.showSex}}" bind:change="handleZanFieldChange" data-key="sex" error="{{sexErr}}" right="{{true}}" disabled="{{!canModify}}">
+      </zan-field>
+      <zan-field title="{{ config.base.age.title }}" type="{{ config.base.age.type }}" inputType="{{ config.base.age.inputType }}" placeholder="{{ config.base.age.placeholder }}" bind:change="handleZanFieldChange" data-key="age" value="{{formdata.age}}" right="{{true}}" disabled="{{!canModify}}">
+      </zan-field>
+      <zan-field title="{{ config.base.place.title }}"  value="{{ formdata.nativePlace }}" placeholder="{{ config.base.place.placeholder }}" bind:change="handleZanFieldChange" data-key="nativePlace"  right="{{true}}" disabled="{{!canModify}}">
+      </zan-field>
+      <zan-field title="{{ config.base.tel.title }}"  value="{{ formdata.phone }}" placeholder="{{ config.base.tel.placeholder }}" bind:change="handleZanFieldChange" data-key="phone" right="{{true}}" disabled="{{!canModify}}">
+      </zan-field>
+      <zan-field title="{{ config.base.email.title }}" value="{{ formdata.email }}" placeholder="{{ config.base.email.placeholder }}" bind:change="handleZanFieldChange" data-key="email" right="{{true}}" disabled="{{!canModify}}" error="{{emailErr}}">
+      </zan-field>
+      <zan-field title="{{ config.base.company.title }}"  value="{{ formdata.company }}" placeholder="{{ config.base.company.placeholder }}" bind:change="handleZanFieldChange" data-key="company" right="{{true}}" disabled="{{!canModify}}">
+      </zan-field>
+      <zan-field maxlength="50" title="{{ config.base.address.title }}" value="{{ formdata.address }}" placeholder="{{ config.base.address.placeholder }}" bind:change="handleZanFieldChange" data-key="address" right="{{true}}" disabled="{{!canModify}}">
+      </zan-field>
+      <!-- <zan-field title="{{ config.base.category.title }}" value="{{ category }}" placeholder="{{ config.base.category.placeholder }}" bind:change="handleZanFieldChange" data-key="category" disabled right="{{true}}">
+      </zan-field> -->
+      <zan-cell title="{{local_lang.auth_type}}" value="{{canModify&&categoryStr==''?'可选':categoryStr}}" bindtap="onSelectCategoryClick"/>
+    </zan-cell-group>
+  </zan-panel>
+
+  <view class='panel-title'>
+    {{local_lang.enclosure}}
+  </view>
+
+  <view class='upload-content'>
+    <text>{{local_lang.tip_des}} </text>
+
+
+    <view class='upload-contents'>
+      <view wx:for="{{fileLists}}" class='upload-contents-item'>
+        <image mode='aspectFit' src="{{item.type==2?item.url:'/pages/img/ic_video.png'}}"></image>
+        <zan-button wx:if="{{canModify}}" size="mini" data-index='{{index}}' bindtap="onFileDeleteClick">{{local_lang.remove}}</zan-button>
+
+      </view>
+      <view class='upload-contents-item' wx:if="{{fileLists.length<5 && canModify}}">
+        <image bindtap='onFileSelectClick' src='/pages/img/ic_upload.png'></image>
+      </view>
+    </view>
+  </view>
+
+
+  <zan-panel title=" " wx:if="{{canModify}}">
+    <view class='btn-bottom'>
+      <zan-button type="primary" bindtap='onCommitClick'>{{local_lang.sure_submit}}</zan-button>
+    </view>
+
+  </zan-panel>
+
+  <zan-toptips id="zan-toptips" content="{{ content }}" is-show="{{ $zanui.toptips.show }}" />
+  <zan-toast id="zan-toast"></zan-toast>
+
+
+  <zan-actionsheet
+          show="{{ show }}"
+          actions="{{ actions }}"
+
+          cancel-with-mask="{{ cancelWithMask }}"
+          bind:cancel="closeActionSheet"
+          bind:actionclick="clickAction"
+          mask-class="tiny"
+  />
+
+</view>

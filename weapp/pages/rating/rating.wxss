@@ -1,0 +1,7 @@
+/* pages/rating/rating.wxss */
+.panel-title{
+  font-size: 14px;
+  line-height: 1;
+  color: #999;
+  padding: 20px 15px 10px 15px;
+}

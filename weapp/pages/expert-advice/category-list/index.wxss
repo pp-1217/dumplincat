@@ -1,0 +1,13 @@
+.wrapper {
+    background-color: #ededed;
+    height: 100vh;
+}
+
+.item {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+.item .item-count {
+    color: #777;
+}

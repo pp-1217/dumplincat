@@ -1,0 +1,4 @@
+<!--pages/test/index.wxml-->
+<view class='container'>
+ <image class='img' mode='widthFix' src='https://www.shengchanren.com/files/-11577930701535373134873653650893.jpg'></image>
+</view>

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "积分兑换",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+
+    "zan-dialog": "/dist/dialog/index",
+    "zan-loadmore": "/dist/loadmore/index"
+
+  }
+}

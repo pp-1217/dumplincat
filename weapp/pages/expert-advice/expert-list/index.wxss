@@ -1,0 +1,35 @@
+/* pages/expert-advice/expert-list/index.wxss */
+
+.wrapper {
+    background-color: #ededed;
+    height: 100vh;
+}
+
+.avatar {
+    height: 80rpx;
+    width: 80rpx;
+    border-radius: 50%;
+}
+
+.item {
+    font-size: 30rpx;
+    line-height: 1.8;
+    color: #777;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.black {
+    color: #000;
+}
+
+.btn {
+    color: #fff;
+    background-color: #47CB89;
+    font-size: 25rpx;
+    border-radius: 5rpx;
+}
+
+.btn:active{
+    background-color: #ccc;
+}

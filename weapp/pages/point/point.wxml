@@ -1,0 +1,28 @@
+<!--pages/point/point.wxml-->
+<view class='container'>
+
+<view class='point-top'>
+  <view class='point-top-center'>
+  <text>{{title}}</text>
+  <text>{{bonusPoints}}{{unit}}</text>
+  </view>
+</view>
+
+<view class='point-items'>
+
+<view wx:for="{{dataTotal}}"  class='point-item'
+bindtap='onExchangeClicked' data-index="{{index}}" wx:key="id">
+<view class='point-item-center'>
+<image class='point-good-pic' src='{{item.coverUrl}}' mode='aspectFit'></image>
+<text class='point-good-point'>{{item.priceRange}}{{local_lang.integral}}</text>
+<text class='point-good-name'>{{item.name}}</text>
+</view>
+</view>
+
+
+</view>
+
+
+ <zan-dialog id="zan-no-title-dialog"></zan-dialog>
+
+</view>

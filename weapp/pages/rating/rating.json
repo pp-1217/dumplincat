@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "等级评定",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "zan-cell": "/dist/cell/index",
+    "zan-panel": "/dist/panel/index",
+    "zan-loadmore": "/dist/loadmore/index",
+    "zan-cell-group": "/dist/cell-group/index"
+    }
+}

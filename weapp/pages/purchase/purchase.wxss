@@ -1,0 +1,18 @@
+/* pages/purchase/purchase.wxss */
+.tip-bottom{
+  width: 80%;
+  margin-left: 10%;
+}
+.tip-bottom>text{
+  font-size: 10pt;
+  color: #b3b3b3;
+}
+
+.btn-bottom{
+  margin: 20rpx;
+  padding: 40rpx;
+}
+
+textarea {
+  width: 220px;
+}

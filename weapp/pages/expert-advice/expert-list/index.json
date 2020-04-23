@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "专家列表",
+    "usingComponents":
+    {
+        "v-button": "../../../dist/btn/index"
+    }
+}

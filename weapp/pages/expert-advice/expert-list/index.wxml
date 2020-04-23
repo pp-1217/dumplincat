@@ -1,0 +1,17 @@
+<scroll-view scroll-y bindscrolltolower='incPageNum' style='height:100vh' class="wrapper pt1">
+    <view wx:for='{{expert_list}}' wx:key='id' class="item flex px2 py1 border-box items-center relative">
+        <image class='avatar' src='{{item.avatarUrl}}'></image>
+        <view class='info mx2'>
+            <view class='flex black'>
+                <text class='bold'>{{item.name}}</text>
+                <text class='ml3'>{{item.score}}分</text>
+            </view>
+            <view>{{item.company}}</view>
+            <view class='position-info'>
+                <text class='mr1'>{{category_name}}</text>
+                <text>{{local_lang.expert}}</text>
+            </view>
+        </view>
+        <view  bindtap='consult' data-expertId='{{item.id}}' class="btn absolute right-0 bottom-0 px1 mx2 my1">{{local_lang.consultate}}</view>
+    </view>
+</scroll-view>

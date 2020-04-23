@@ -1,0 +1,22 @@
+<!--pages/repairrecord/index.wxml-->
+
+<view class="container">
+    <block wx:for="{{ 1 }}"  wx:key="id">
+        <zan-panel title="{{ group.title }}">
+            <zan-cell-group>
+                <zan-cell wx:for="{{ dataTotal }}" wx:key="name" is-link bindtap="onRecordClick" data-index="{{index}}" title="{{ item.showTime }}"></zan-cell>
+
+
+            </zan-cell-group>
+        </zan-panel>
+    </block>
+    <!-- <view style='background:#fff;'> -->
+    <zan-loadmore type="text" text="{{loadText}}"></zan-loadmore>
+    <!-- </view> -->
+
+    <zan-toptips id="zan-toptips" content="{{ content }}" is-show="{{ $zanui.toptips.show }}" />
+        <zan-toast id="zan-toast"></zan-toast>
+
+</view>
+
+

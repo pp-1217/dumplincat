@@ -1,0 +1,5 @@
+<view class="{{visible?'':'hidden'}}  wrapper">
+    <view class='dialog' style="{{style}}">
+        <slot></slot>
+    </view>
+</view>

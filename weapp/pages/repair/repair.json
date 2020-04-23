@@ -1,0 +1,17 @@
+{
+  "navigationBarTitleText": "维修申请",
+  "usingComponents": {
+    "zan-button": "/dist/btn/index",
+    "zan-button-group": "/dist/btn-group/index",
+    "zan-cell-group": "/dist/cell-group/index",
+    "zan-field": "/dist/field/index",
+    "zan-panel": "/dist/panel/index",
+    "zan-cell": "/dist/cell/index",
+    "zan-icon": "/dist/icon/index",
+    "zan-toptips": "/dist/toptips/index",
+    "zan-dialog": "/dist/dialog/index",
+    "zan-actionsheet": "/dist/actionsheet/index",
+    "zan-toast": "/dist/toast/index",
+    "zan-popup": "/dist/popup/index"
+  }
+}

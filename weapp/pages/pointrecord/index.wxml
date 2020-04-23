@@ -1,0 +1,26 @@
+<!--pages/billrecord/index.wxml-->
+<view class="container">
+
+  <view class='point-top'>
+  <view class='point-top-center'>
+  <text>{{local_lang.my_score}}</text>
+  <text>{{bonusPoints}}{{local_lang.unit}}</text>
+  </view>
+</view>
+
+  <block wx:for="{{ 1 }}" wx:for-item="group" wx:key="title">
+    <zan-panel title="{{ group.title }}">
+      <zan-cell-group>
+        <zan-cell wx:for="{{ dataTotal }}" wx:key="id"  title="{{ item.showTitle }}"
+        label="{{ item.subTitle }}" value="{{ item.opTime }}"
+          bindtap="onBillClick" data-index="{{index}}"></zan-cell>
+
+        
+      </zan-cell-group>
+    </zan-panel>
+  </block>
+  <!-- <view style='background:#fff;'> -->
+   <zan-loadmore type="text" text="{{loadText}}"></zan-loadmore>
+  <!-- </view> -->
+ 
+</view>

@@ -1,0 +1,65 @@
+<!--pages/rating2/rating2.wxml-->
+<view class='container'>
+
+
+<zan-panel title="{{local_lang.tip1}}">
+<view class='remark1'>
+    <textarea bindinput="bindTextAreaBlur" auto-height placeholder="{{local_lang.placeholder}}" value='{{formData.remark1}}'/>
+        </view>
+    
+</zan-panel>
+
+
+<zan-panel title="{{local_lang.tip2}}">
+
+
+<zan-cell-group border>
+    <zan-cell bindtap="onAbilityClick" data-index="0" title="{{local_lang.mechanical}}" value="{{abilityStrList[formData.ability1-1]}}"></zan-cell>
+    <zan-cell bindtap="onAbilityClick" data-index="1"  title="{{local_lang.technological}}" value="{{abilityStrList[formData.ability2-1]}}"></zan-cell>
+    <zan-cell bindtap="onAbilityClick" data-index="2"  title="{{local_lang.electrical}}" value="{{abilityStrList[formData.ability3-1]}}"></zan-cell>
+  </zan-cell-group>
+
+
+      </zan-panel>
+
+
+<zan-panel title="{{local_lang.summary}}" style="background-color: #F9F9F9; ">
+
+
+
+
+<view class='tab-selector-banner'>
+    <view class='tab-selector' bindtap='onCategoryClick'>
+      <text>{{roleStrList[roleIndex]}}</text>
+      <image src='/pages/img/arrow_bottom.png'></image>
+    </view>
+    <view class='tab-selector'  bindtap='onLevelClick' >
+      <text>{{levelStrList[levelIndex]}}</text>
+      <image src='/pages/img/arrow_bottom.png'></image>
+    </view>
+  </view>
+
+  <view style='height:60rpx; background-color: #F9F9F9;' >
+  
+  </view>
+
+<view class='remark1'>
+    <textarea bindinput="bindTextAreaBlur1" auto-height placeholder="{{local_lang.placeholder}}" value='{{formData.remark2}}'/>
+        </view>
+
+<!-- <view style='height:220rpx;'>
+
+</view> -->
+
+
+      </zan-panel>
+
+
+<view  class='btn-commit'>
+  <zan-button  type="primary" bindtap='uploadAuthen'>{{local_lang.submit}}</zan-button>
+</view>
+
+ <zan-toptips id="zan-toptips" content="{{ content }}" is-show="{{ $zanui.toptips.show }}" />
+  <zan-toast id="zan-toast"></zan-toast>
+
+</view>

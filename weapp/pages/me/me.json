@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "个人中心",
+  "usingComponents": {
+    "zan-panel": "../../dist/panel/index",
+    "zan-cell": "../../dist/cell/index",
+    "zan-cell-group": "../../dist/cell-group/index",
+    "van-tabbar": "/dist/tabbar/index",
+    "van-tabbar-item": "/dist/tabbar-item/index"
+  }
+}

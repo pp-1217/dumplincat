@@ -1,0 +1,20 @@
+<view class="container">
+  <form bindsubmit="bindSave">
+    <!-- <view style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>1、同意当前小程序获取我的微信头像；</view>
+    <view style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>2、同意当前小程序获取我的微信昵称等其他信息；</view> -->
+
+<view style='text-align: center;margin-top:30rpx;'>
+<image style="width: 128px; height: 128px; background-color: #eeeeee;" mode="aspectFit" src="../img/icon.jpg"></image>
+  </view>
+  <view style='border-top-style:solid; border-width:1px;border-color:#dddee1;'></view>
+  <view style='text-align: center;padding-top:20px;font-size:16px'> {{local_lang.tip1}}</view>
+    <view style='padding-left:20px;' class='app-remind'>  {{local_lang.tip2}} </view>
+
+
+    <view class='btn-bottom'>
+      <zan-button type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">{{local_lang.login}}</zan-button>
+    </view>
+
+  </form>
+</view>
+<zan-toptips id="zan-toptips" content="{{ content }}" is-show="{{ $zanui.toptips.show }}"/>

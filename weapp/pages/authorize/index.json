@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "用户信息授权",
+  "usingComponents": {
+    "zan-toptips": "/dist/toptips/index",
+    "zan-button": "/dist/btn/index"
+  }
+}

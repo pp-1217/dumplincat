@@ -1,0 +1,26 @@
+/* pages/me/me.wxss */
+.userinfo{
+  display: flex;
+	flex-direction: column;
+	padding: 50rpx 0;
+	align-items: center;
+	background: #4090E2;
+  width: 750rpx;
+}
+.userinfo-avatar {
+  display: block;
+  width: 160rpx;
+	height: 160rpx;
+	margin: 20rpx;
+	border-radius: 50%;
+}
+.userinfo-nickname{
+	color: #FFF;
+	font-size: 28rpx;
+	background: rgba(255,255,255,0);
+	outline: none;
+
+}
+.userinfo-avatar::after,.userinfo-nickname::after {
+	border: none;
+}

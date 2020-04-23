@@ -1,0 +1,25 @@
+<view class="wrapper flex flex-column relative">
+    <video src="{{videoUrl}}" controls></video>
+    <scroll-view
+        scroll-y
+        style='height:60vh'
+        bindscrolltolower='incPageNum'
+        >
+        <view class="comment" wx:for='{{comments}}' wx:key='id'>
+            <view class="comment_top flex">
+                <view class="avatar">
+                    <image src='{{item.createUserAvatarUrl}}'></image>
+                </view>
+                <view class='px1'>
+                    <view class='comment_username'>{{item.createUserName}}</view>
+                    <view class="comment_content my1">{{item.content}}</view>
+                </view>
+            </view>
+            <view class="comment_bottom">{{item.createTime}}</view>
+        </view>
+    </scroll-view>
+    <view class='flex p1 btn-wrapper items-center'>
+        <input bindinput='setCommentContent' value='{{reqComment.content}}' class='flex-auto' type="text" placeholder="{{local_lang.placeholder}}" />
+        <view bindtap='createComment' class='btn-comment'>{{local_lang.comment}}</view>
+    </view>
+</view>

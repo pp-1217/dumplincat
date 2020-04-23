@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "生态圈",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "zan-card": "/dist/card/index",
+    "zan-tag": "/dist/tag/index",
+    "zan-button": "../../dist/btn/index",
+    "zan-search": "../../dist/search/index",
+    "zan-loadmore": "/dist/loadmore/index"
+  }
+  }

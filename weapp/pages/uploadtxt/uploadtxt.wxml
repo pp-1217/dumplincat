@@ -1,0 +1,106 @@
+<!--pages/uploadtxt/uploadtxt.wxml-->
+<view class='container'>
+
+<zan-panel title="{{local_lang.info}}">
+    <zan-cell-group>
+      <zan-field
+        title="{{ config.base.name.title }}"
+        placeholder="{{ config.base.name.placeholder }}"
+        focus="{{ config.base.name.focus }}"
+        value="{{ formdata.name }}"
+        right="{{true}}"
+        bind:change="handleZanFieldChange" data-key="name">
+      </zan-field>
+
+
+      <!--<zan-field-->
+        <!--title="{{ config.base.tel.title }}"-->
+        <!--placeholder="{{ config.base.tel.placeholder }}"-->
+        <!--error="{{ config.base.tel.error }}"-->
+        <!--input-type="number"-->
+        <!--value="{{ formdata.price }}"-->
+        <!--right="{{true}}"-->
+        <!--bind:change="handleZanFieldChange" data-key="price">-->
+      <!--</zan-field>-->
+
+        <zan-cell title="{{ config.base.tel.title }}" value="{{formdata.price}}{{local_lang.sroce}}" bindtap="onSelectPointClick"/>
+       <zan-cell >
+        <view style="width:100%;position:relative;height:52rpx">
+          <view style="position:absolute;left:0">{{local_lang.classification}}</view>
+          <picker bindchange="bindPickerChange" value="{{categoryselectIndex}}" 
+            range-key="name"
+            range="{{categoryList}}">
+            <view class="picker">
+          
+              {{categoryList[categoryselectIndex].name}}
+            </view>
+          </picker>
+       </view>
+        
+       </zan-cell>
+       
+        
+
+    </zan-cell-group>
+  </zan-panel>
+
+  <view class='panel-title'>
+    {{local_lang.upload}}
+  </view>
+
+  <view class='upload-content'>
+    <text>{{local_lang.tip}}</text>
+    <!-- <image bindtap='onFileSelectClick' src='/pages/img/ic_upload.png'>
+
+    </image> -->
+
+<!--<view class='upload-contents'>-->
+      <!--<view  wx:for="{{fileLists}}"  class='upload-contents-item'>-->
+      <!--<image src="{{item.}}"></image>-->
+      <!--<zan-button size="mini" data-index='{{index}}'>删除</zan-button>-->
+      <!---->
+      <!--</view>-->
+      <!--<view  class='upload-contents-item'>-->
+            <!--<image bindtap='onFileSelectClick' src='/pages/img/ic_upload.png'></image>-->
+      <!--</view>-->
+    <!--</view>-->
+
+      <!--
+
+      <view class='upload-contents'>
+          <view wx:for="{{fileLists}}" class='upload-contents-item'>
+              <image src="{{item.type==2?item.url:'/pages/img/ic_video.png'}}"></image>
+              <zan-button wx:if="true" size="mini" data-index='{{index}}' bindtap="onFileDeleteClick">删除</zan-button>
+
+          </view>
+          <view class='upload-contents-item'>
+              <image bindtap='onFileSelectClick' src='/pages/img/ic_upload.png'></image>
+          </view>
+      </view>
+
+      -->
+
+
+      <view class='upload-contents'>
+          <view wx:if="{{formdata.url||fileLists.length>0}}" class='upload-contents-item'>
+              <image src="/pages/img/ic_video.png"></image>
+              <zan-button wx:if="{{false}}" size="mini" data-index='{{index}}' bindtap="onFileDeleteClick">{{local_lang.remove}}</zan-button>
+
+          </view>
+          <view class='upload-contents-item' wx:if="{{true}}">
+              <image bindtap='onFileSelectClick' src='/pages/img/ic_upload.png'></image>
+          </view>
+      </view>
+  <!--</view>-->
+
+
+  </view>
+
+<view  class='btn-commit'>
+  <zan-button bindtap='onCommitClick'  type="primary">{{local_lang.submit}}</zan-button>
+</view>
+
+    <zan-toptips id="zan-toptips" content="{{ content }}" is-show="{{ $zanui.toptips.show }}" />
+    <zan-toast id="zan-toast"></zan-toast>
+
+</view>

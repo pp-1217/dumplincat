@@ -1,0 +1,4 @@
+<!--pages/video/index.wxml-->
+<view class="container center">
+  <video id="myVideo" src="{{url}}"  controls></video>
+</view>

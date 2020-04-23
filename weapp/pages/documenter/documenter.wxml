@@ -1,0 +1,52 @@
+<!--pages/documenter/documenter.wxml-->
+<view class='container'>
+    <view>
+        <zan-tab list="{{ tab.list }}" selected-id="{{ tab.selectedId }}" bindtabchange='handleTabChange' />
+    </view>
+    <zan-search placeholder="{{local_lang.placeholder}}" searchStyle="height: 88rpx; padding: 0 30rpx; background: {{ searchbg || '#F2F2F2' }};" inputStyle="height: 56rpx; border-radius: 8rpx;" keyword="{{ inputValue }}" focus="{{ false }}" bindchange="searchChange" />
+    <view class='tab-selector-banner'>
+        <view class='tab-selector' bindtap='onClassSelcted'>
+            <text>{{categoryStrList[categoryIndex]}}</text>
+            <image src='/pages/img/arrow_bottom.png'></image>
+        </view>
+        <view class='tab-upload' bindtap='onUploadClick'>
+            <text>{{local_lang.upload}}</text>
+        </view>
+    </view>
+    <view hidden="{{tabSelectedId==1}}">
+        <!-- <block wx:for="{{ 1 }}" wx:for-item="group" wx:key="title"> -->
+        <zan-panel title="{{ group.title }}">
+            <zan-cell-group style="margin-bottom:1px;">
+                <zan-cell wx:for="{{ dataTotal }}" wx:key="id" title="{{ item.name }}" bindtap="onOpenFile" data-url="{{item.url}}" data-index="{{index}}" value="{{local_lang.inspection}}{{item.price}}{{local_lang.score}}">
+                    <image slot="icon" src='{{item.showSuffix}}' />
+                </zan-cell>
+            </zan-cell-group>
+        </zan-panel>
+        <zan-loadmore type="text" text="{{loadText}}"></zan-loadmore>
+        <!-- </block> -->
+    </view>
+    <view class='videos' hidden="{{tabSelectedId!=1}}">
+        <view class="{{index==0?'margin-top video-item':'margin-more video-item'}}" wx:for="{{dataTotal}}" wx:key="id">
+            <view class='video-item-title'>
+                <text>{{item.name}}</text>
+            </view>
+            <view class='video-parent' bindtap='toVideoDetail' data-price="{{item.price}}" data-status='{{item.status}}' data-url='{{item.url}}' data-id='{{item.id}}' data-index='{{index}}'>
+                <view class='img-parent-view'>
+                    <image class="model-img" style="width: 720rpx;height: calc(9 * 720rpx / 16);" mode='aspectFit' src="{{item.coverUrl}}"></image>
+                    <view class="model-btn">
+                        <view class="play-icon"></view>
+                    </view>
+                </view>
+            </view>
+            <view class='video-item-title video-bottom-title flex justify-between'>
+                <text>{{local_lang.uploader}}:{{item.uploadUserName?item.uploadUserName:''}}</text>
+                <text>{{local_lang.comments}}:{{item.commentSize}}</text>
+                <text>{{local_lang.inspection}}{{item.price}}{{local_lang.score}}</text>
+            </view>
+        </view>
+        <zan-loadmore type="text" text="{{loadText}}"></zan-loadmore>
+    </view>
+    <zan-toptips id="zan-toptips" content="{{ content }}" is-show="{{ $zanui.toptips.show }}" />
+    <zan-toast id="zan-toast"></zan-toast>
+    <zan-actionsheet show="{{ show }}" actions="{{ actions }}" cancel-with-mask="{{ cancelWithMask }}" bind:cancel="closeActionSheet" bind:actionclick="clickAction" mask-class="tiny" />
+</view>

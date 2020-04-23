@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "购买",
+  "usingComponents": {
+    "zan-button": "../../dist/btn/index",
+    "zan-button-group": "../../dist/btn-group/index",
+    "zan-cell-group": "../../dist/cell-group/index",
+    "zan-field": "../../dist/field/index",
+    "zan-panel": "../../dist/panel/index",
+    "zan-toptips": "/dist/toptips/index",
+    "zan-toast": "/dist/toast/index"
+  }
+}

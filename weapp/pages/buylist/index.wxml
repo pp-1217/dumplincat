@@ -1,0 +1,65 @@
+<!--pages/buylist/index.wxml-->
+<view class="container">
+
+
+    <!--分类、够买方式、起止时间-->
+    <!--<view class='tab-selector-banner'>-->
+        <!--<view class='tab-selector' bindtap='onSelCategoryClick'>-->
+            <!--<text>分类{{goodStrList[goodSelIndex]}}</text>-->
+            <!--<image src='/pages/img/arrow_bottom.png'></image>-->
+        <!--</view>-->
+        <!--<view class='tab-selector'  bindtap='onSelBuyClick' >-->
+            <!--<text>购买方式{{goodBuyTypeList[goodBuyTypeIndex]}}</text>-->
+            <!--<image src='/pages/img/arrow_bottom.png'></image>-->
+        <!--</view>-->
+    <!--</view>-->
+
+    <!--<zan-cell title="选择起始时间">-->
+        <!--<zan-date-picker-->
+                <!--slot="footer"-->
+                <!--not-use="{{['hours','minutes', 'seconds']}}"-->
+                <!--bindchange="onStartTimeChanged"-->
+                <!--bindcancel="onStartTimeCancel"-->
+                <!--placeholder="{{startTime}}"-->
+        <!--/>-->
+    <!--</zan-cell>-->
+
+    <!--<zan-cell title="选择结束时间">-->
+        <!--<zan-date-picker-->
+                <!--slot="footer"-->
+                <!--not-use="{{['hours','minutes', 'seconds']}}"-->
+                <!--bindchange="onEndTimeChanged"-->
+                <!--bindcancel="onEndTimeCancel"-->
+                <!--placeholder="{{endTime}}"-->
+        <!--/>-->
+    <!--</zan-cell>-->
+
+
+    <!--years, months, days, hours, minutes, seconds-->
+
+    <!--<view class='tab-selector-banner'>-->
+        <!--<view class='tab-selector' bindtap='onSelStartTimeClick'>-->
+            <!--<text>起始时间</text>-->
+            <!--<image src='/pages/img/arrow_bottom.png'></image>-->
+        <!--</view>-->
+        <!--<view class='tab-selector'  bindtap='onSelEndTimeClick' >-->
+            <!--<text>结束时间</text>-->
+            <!--<image src='/pages/img/arrow_bottom.png'></image>-->
+        <!--</view>-->
+    <!--</view>-->
+
+    <block wx:for="{{ 1 }}"  wx:key="id">
+        <zan-panel title="{{ group.title }}">
+            <zan-cell-group>
+                <zan-cell wx:for="{{ dataTotal }}" wx:key="name" bindtap="onRecordClick" data-index="{{index}}" title="{{ item.name }}"></zan-cell>
+
+
+            </zan-cell-group>
+        </zan-panel>
+    </block>
+    <!-- <view style='background:#fff;'> -->
+    <zan-loadmore type="text" text="{{loadText}}"></zan-loadmore>
+    <!-- </view> -->
+    <zan-toptips id="zan-toptips" content="{{ content }}" is-show="{{ $zanui.toptips.show }}" />
+    <zan-toast id="zan-toast"></zan-toast>
+</view>

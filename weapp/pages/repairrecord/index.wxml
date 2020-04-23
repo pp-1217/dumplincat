@@ -1,0 +1,46 @@
+<!--pages/repairrecord/index.wxml-->
+<view class='container'>
+
+<zan-panel title="">
+    <zan-cell-group>
+
+      <zan-cell title="{{local_lang.repair_result}}" value="{{formdata.showRes}}"
+       bindtap="onSelectResClick"/>
+
+
+      <zan-field
+        title="{{local_lang.explain}}"
+        placeholder="{{local_lang.explain_max}}"
+        maxlength="50"
+        type="textarea"
+        bind:change="handleZanFieldChange"
+      >
+</zan-field>
+       
+    </zan-cell-group>
+  </zan-panel>
+
+      <zan-panel title="{{local_lang.upload}}">
+
+          <view class='upload-contents'>
+              <view wx:for="{{fileLists}}" class='upload-contents-item'>
+                  <image mode='aspectFit' src="{{item.type==2?item.url:'/pages/img/ic_video.png'}}"></image>
+                  <zan-button wx:if="{{canModify}}" size="mini" data-index='{{index}}' bindtap="onFileDeleteClick">{{local_lang.remove}}</zan-button>
+
+              </view>
+              <view class='upload-contents-item' wx:if="{{fileLists.length<5 && canModify}}">
+                  <image bindtap='onFileSelectClick' src='/pages/img/ic_upload.png'></image>
+              </view>
+          </view>
+
+    </zan-panel>
+
+    <view  class='btn-commit' wx:if="{{canModify}}">
+  <zan-button  type="primary" bindtap='onCommitClick'>{{local_lang.submit}}</zan-button>
+</view>
+
+    <zan-toptips id="zan-toptips" content="{{ content }}" is-show="{{ $zanui.toptips.show }}" />
+    <zan-toast id="zan-toast"></zan-toast>
+
+ </view>
+

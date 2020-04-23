@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "积分消费记录",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "zan-panel": "/dist/panel/index",
+    "zan-cell": "/dist/cell/index",
+    "zan-cell-group": "/dist/cell-group/index",
+    "zan-loadmore": "/dist/loadmore/index",
+    "zan-toptips": "/dist/toptips/index",
+    "zan-toast": "/dist/toast/index"
+    
+  }
+}

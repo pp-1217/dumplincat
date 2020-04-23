@@ -1,0 +1,14 @@
+<scroll-view class="wrapper  pt1" style='height:100vh' bindscrolltolower='incPageNum' scroll-y>
+    <view bindtap='toDetail' wx:for='{{conversation_list}}' wx:key='id' class="item flex p1 relative" 
+    data-expert_avatar_url='{{item.expertUserAvatarUrl}}' data-conversation_id='{{item.id}}'
+    data-expert_name='{{item.expertUserName}}'
+    data-status='{{item.status}}'>
+        <image src='{{item.expertUserAvatarUrl}}' class='avatar my2'></image>
+        <view class="msg px2 border-box">
+            <view class="msg_sender bold">{{item.expertUserName}}</view>
+            <view class='msg_sender-company'>{{item.expertUserCompany}}</view>
+            <view class="msg_send-time">{{item.createTime}}</view>
+        </view>
+        <view wx:if='{{item.conversationDetail&&item.conversationDetail.status===0}}' class='tip absolute right-0 mr2'>{{local_lang.new_message}}</view>
+    </view>
+</scroll-view>

@@ -1,0 +1,69 @@
+/* pages/bill/bill.wxss */
+
+.item-bill {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+
+.item1 {
+  font-size: 14pt;
+  border-bottom:1rpx solid #f9f9f9;
+  padding: 20rpx;
+}
+
+.item-center {
+  border-bottom:1rpx solid #f9f9f9;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.item-center-left {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 3;
+}
+ .item-center-left>text {
+  font-size: 10pt;
+  padding-top: 6rpx;
+  padding-bottom: 6rpx;
+  color: #b1b1b1;
+}
+
+.item-center-price {
+  display: flex;
+  align-items: flex-end;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.item-center-price>text {
+  font-size: 12pt;
+
+}
+
+.item-bottom {
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+ justify-content: center;
+ align-items: center;
+}
+.item-bottom>text{
+  font-size: 10pt;
+  flex-grow: 3;
+  color: #b1b1b1;
+}
+
+zan-tag{
+  flex-grow: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+ align-items: flex-end;
+}

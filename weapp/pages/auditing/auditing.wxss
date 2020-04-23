@@ -1,0 +1,31 @@
+/* pages/auditing/auditing.wxss */
+
+.btn-commit{
+  margin-top: 60rpx;
+ padding-left: 40rpx;
+ padding-right: 40rpx;
+margin-bottom: 60rpx;
+
+}
+.auditing-images{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+}
+.auditing-image-item{
+width: 250rpx;
+display: flex;
+justify-content: center;
+padding-top: 10rpx;
+padding-bottom: 10rpx;
+}
+.auditing-image-item>image{
+  width: 180rpx;
+  height: 180rpx;
+}
+.auditing-video{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

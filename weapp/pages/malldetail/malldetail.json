@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "生态圈",
+  "usingComponents": {
+    "zan-cell": "/dist/cell/index",
+    "zan-button": "/dist/btn/index",
+    "zan-toptips": "/dist/toptips/index",
+    "zan-icon": "/dist/icon/index"
+  }
+}

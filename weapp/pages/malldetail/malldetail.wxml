@@ -1,0 +1,39 @@
+<!--pages/malldetail/malldetail.wxml-->
+<view class="container">
+
+<!-- <scroll-view class="scroll-view-detail"> -->
+<view class="banner">
+
+    <swiper wx:if="{{good.fileUrlList.length>0}}" indicator-dots="true" autoplay="true" interval="5000" indicator-active-color="#2089DC" circular="true" bindchange="EventHandle">
+      <block wx:for="{{good.fileUrlList}}">
+        <swiper-item>
+          <image src="{{item.url}}" style="width:100%;" mode='widthFix' ></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='mall-goods' wx:if="{{payType==1}}">
+    <view class='mall-goods-item' wx:for="{{goodSize}}" wx:key="id">
+      <text class='goods-item-type'>{{item.norms}}</text>
+      <text class='goods-item-price'>{{item.price}}</text>
+      <text class='goods-item-buy' bindtap='onBuyClick' data-index="{{index}}">{{local_lang.inquiry}}</text>
+    </view>
+  </view>
+
+  <image wx:for="{{good.descUrlList}}" wx:key="id" class='mall-good-describe' src="{{item.url}}" mode='widthFix' ></image>
+<view class='btn-bottom'>
+<zan-button wx:if="{{payType==2}}" type="primary" bindtap='onCommitClick'>{{local_lang.exchange}}</zan-button>
+</view>
+
+  <!--id：规格ID-->
+  <!--norms：规格名-->
+  <!--price：单价-->
+  <!--description：规格描述-->
+  <!--goodsId：商品主键ID-->
+
+<!-- </scroll-view> -->
+
+
+
+</view>
+  <zan-toptips id="zan-toptips" content="{{ content }}" is-show="{{ $zanui.toptips.show }}" />

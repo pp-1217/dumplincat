@@ -1,0 +1,37 @@
+.wrapper {
+    background-color: #ededed;
+    height: 100vh;
+}
+
+textarea {
+    width: 100%;
+    color: #ccc;
+    background-color: #fff;
+}
+
+.leading {
+    color: #ccc;
+    font-size: 30rpx;
+}
+
+.upload {
+    background-color: #fff;
+    font-size: 25rpx;
+    color: #777;
+}
+
+.bottom {
+    width: 100%;
+}
+
+.btn-upload {
+    border-radius: 30rpx;
+    background-color: #488FE1;
+    color: #fff;
+}
+
+.btn-tip {
+    border-radius: 10rpx;
+    border:1px solid #e3e3e3;
+    text-align: center;
+}

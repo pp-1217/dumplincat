@@ -1,0 +1,18 @@
+<view class='wrapper pt1 relative'>
+    <textarea name="" class='input-area line-height-2' placeholder="{{placeholder}}" bindinput='setContent' value='{{submitData.content}}'></textarea>
+    <view class='leading border-box pt2 pl1 pb1'>{{uploadFileTip}}</view>
+    <view class="upload border-box p1">
+        <text>{{max}}</text>
+        <view class="assets-list-wrapper flex flex-wrap">
+            <view class='asset-wrapper mt1 mr1 mb1' wx:for='{{fileList}}' wx:key='path'>
+                <video wx:if='{{item.isVideo}}'  src='{{item.path}}' style='width:120rpx;height:120rpx'></video>
+                <image wx:else src='{{item.path}}' style='width:120rpx;height:120rpx'></image>
+                <view bindtap='alertRemove' data-index='{{index}}' class='btn-tip col-8 mx-auto' size='mini'>{{remove}}</view>
+            </view>
+            <image bindtap='chooseAssets' src='../../img/upload.png' style='width:120rpx;height:120rpx' class='mt1 mr1 mb1'></image>
+        </view>
+    </view>
+    <view class='bottom absolute bottom-0'>
+        <view bindtap='submit' class='btn-upload mx2 my3 center py1 border'>{{submit}}</view>
+    </view>
+</view>

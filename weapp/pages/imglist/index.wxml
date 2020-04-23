@@ -1,0 +1,13 @@
+<!--pages/imglist/index.wxml-->
+<view class='container'>
+
+
+
+ <image wx:if="{{!showWeb}}" wx:for="{{urls}}" wx:key="id" src='{{item.url}}' bindtap='onPicClick' data-id='{{item.id}}' mode='widthFix' style="width:100%;">
+    
+</image>
+
+ <web-view wx:if="{{showWeb}}" src="{{urls[0].url}}"></web-view>
+
+
+</view>

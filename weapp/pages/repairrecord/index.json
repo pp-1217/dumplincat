@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "维修调试",
+  "usingComponents": {
+    "zan-button": "/dist/btn/index",
+    "zan-button-group": "/dist/btn-group/index",
+    "zan-panel": "../../dist/panel/index",
+    "zan-cell": "../../dist/cell/index",
+    "zan-cell-group": "../../dist/cell-group/index",
+    "zan-loadmore": "/dist/loadmore/index",
+    "zan-field": "/dist/field/index",
+    "zan-toptips": "/dist/toptips/index",
+    "zan-toast": "/dist/toast/index"
+  }
+}

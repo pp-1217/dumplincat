@@ -1,0 +1,45 @@
+/* pages/malldetail/malldetail.wxss */
+
+.mall-goods{
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+}
+.mall-goods-item{
+  display: flex;
+  flex-direction: row;
+  height: 96rpx;
+  align-items: center;
+  margin-top: 2px;
+  background: #fff;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+.goods-item-type{
+flex-grow: 2;
+font-size: 12pt;
+}
+.goods-item-price{
+  flex-grow: 1;
+  text-align: center;
+  font-size: 10pt;
+  color:#9d9d9d;
+}
+.goods-item-buy{
+  flex-grow: 1;
+  text-align: center;
+  font-size: 8pt;
+  color: #F5A623;
+}
+.mall-good-describe{
+  /* width: 100%;
+  height: 3897rpx; */
+
+}
+image{
+  width: 100%;
+}
+
+.scroll-view-detail{
+  display: flex;
+  flex-direction: column;
+}

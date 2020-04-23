@@ -1,0 +1,28 @@
+.wrapper {
+    background-color: #ededed;
+    height: 100vh;
+}
+
+.item {
+    font-size: 30rpx;
+    line-height: 2;
+    background-color: #fff;
+    color: #777;
+    border-bottom: 1px solid #ccc;
+}
+
+.msg_sender {
+    color: #000;
+}
+
+.avatar {
+    height: 75rpx;
+    width: 75rpx;
+    border-radius: 50%;
+}
+
+.tip {
+    color: #CF5D73;
+    top: 50%;
+    transform: translateY(-50%);
+}

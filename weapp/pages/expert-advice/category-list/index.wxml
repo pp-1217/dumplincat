@@ -1,0 +1,8 @@
+<view class="wrapper pt1 overflow-auto">
+    <block wx:for='{{list}}' wx:key='categoryName'>
+        <view bindtap='toExpert' data-category_name='{{item.categoryName}}'  data-category='{{item.category}}' class="item flex  items-center py3 border-box center">
+            <view class='category-name flex-auto bold h4'>{{item.categoryName}}</view>
+            <view class='item-count flex-auto h6'>{{item.co}}位专家</view>
+        </view>
+    </block>
+</view>

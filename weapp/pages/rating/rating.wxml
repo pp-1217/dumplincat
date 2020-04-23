@@ -1,0 +1,14 @@
+<!--pages/rating/rating.wxml-->
+<view class='container'>
+
+<view class='panel-title'>
+{{local_lang.engineers}}
+</view>
+  <zan-cell-group class="cell-panel-demo">
+ <zan-cell wx:for="{{dataTotal}}" wx:key="{{id}}" title="{{item.name?item.name:'未命名'}}" data-index="{{index}}" bindtap="handleTap"
+           value="{{item.reviewStatus==0?'未审':'已审'}}"></zan-cell>
+
+      <zan-loadmore type="text" text="{{loadText}}"></zan-loadmore>
+ </zan-cell-group>
+ 
+</view>
